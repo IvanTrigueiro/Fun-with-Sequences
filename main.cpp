@@ -1,28 +1,34 @@
 #include <iostream>
 #include <stdio.h>
-
 using namespace std;
 
 int main()
 {
     int n, m, i, j;
-    int s[101], q[101];
+    int s[100], q[100];
 
-    cin >> n;
+    scanf("%d",&n);
+    for(i = 0; i < n; i++)
+        scanf("%d",&s[i]);
 
-    for(i = 0; i <= n; i++){
-        cin >> s[i];
+    scanf("%d",&m);
+    for(i = 0; i < m; i++)
+        scanf("%d",&q[i]);
+
+    for(i = 0, j = 0; i < n && j < m;)
+    {
+        if(s[i] - q[j] < 0)
+        {
+        printf("%d ", s[i]);
+        i++;
+        }
+        else if(s[i] == q[j])
+            i++;
+        else
+            j++;
     }
-    cin >> m;
-
-    for(i = 0; i <= m; i++){
-        cin >> q[i];
-    }
-
-    for(i = 0, j = 0; i <= n && j <= m; i++, j++){
-            if(s[i] != q[j])
-            cout << s[i];
-    }
+    while(i<n)
+    printf("%d ",s[i++]);
 
     return 0;
 }
